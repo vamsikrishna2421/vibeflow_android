@@ -1,0 +1,63 @@
+# XcodeGen spec — run `xcodegen generate` in this folder to produce VibeFlow.xcodeproj,
+# then open it in Xcode. (brew install xcodegen)
+name: VibeFlow
+options:
+  bundleIdPrefix: com.vibeflow.mobile
+  deploymentTarget:
+    iOS: "16.0"
+  createIntermediateGroups: true
+
+settings:
+  base:
+    MARKETING_VERSION: "0.1.0"
+    CURRENT_PROJECT_VERSION: "1"
+    SWIFT_VERSION: "5.9"
+    DEVELOPMENT_TEAM: ""   # set your Apple Developer Team ID in Xcode to run on device
+
+targets:
+  VibeFlow:
+    type: application
+    platform: iOS
+    sources:
+      - VibeFlow
+      - VibeFlowCore
+    info:
+      path: VibeFlow/Info.plist
+      properties:
+        CFBundleDisplayName: VibeFlow
+        UILaunchScreen: {}
+        NSMicrophoneUsageDescription: "VibeFlow turns your voice into text entirely on this device."
+        NSSpeechRecognitionUsageDescription: "Speech is recognised on-device; your voice never leaves your phone."
+        UISupportedInterfaceOrientations:
+          - UIInterfaceOrientationPortrait
+    entitlements:
+      path: VibeFlow/VibeFlow.entitlements
+      properties:
+        com.apple.security.application-groups:
+          - group.com.vibeflow.mobile
+    dependencies:
+      - target: VibeFlowKeyboard
+
+  VibeFlowKeyboard:
+    type: app-extension
+    platform: iOS
+    sources:
+      - VibeFlowKeyboard
+      - VibeFlowCore
+    info:
+      path: VibeFlowKeyboard/Info.plist
+      properties:
+        CFBundleDisplayName: VibeFlow
+        NSExtension:
+          NSExtensionPointIdentifier: com.apple.keyboard-service
+          NSExtensionPrincipalClass: $(PRODUCT_MODULE_NAME).KeyboardViewController
+          NSExtensionAttributes:
+            IsASCIICapable: false
+            PrefersRightToLeft: false
+            PrimaryLanguage: en-US
+            RequestsOpenAccess: false   # App-Group hand-off needs no open access
+    entitlements:
+      path: VibeFlowKeyboard/VibeFlowKeyboard.entitlements
+      properties:
+        com.apple.security.application-groups:
+          - group.com.vibeflow.mobile

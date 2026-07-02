@@ -1,0 +1,7 @@
+project_id = "vibeflow"
+
+[functions.polish]
+verify_jwt = true
+
+[functions.claim-device]
+verify_jwt = true

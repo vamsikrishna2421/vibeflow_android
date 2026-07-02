@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data-extraction-rules>
+    <cloud-backup>
+        <!-- History and settings are personal; exclude from cloud transfer by default. -->
+        <exclude domain="file" path="." />
+    </cloud-backup>
+    <device-transfer>
+        <include domain="file" path="vibeflow" />
+    </device-transfer>
+</data-extraction-rules>

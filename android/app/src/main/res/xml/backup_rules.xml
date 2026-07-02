@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<full-backup-content>
+    <!-- Keep dictation history local to the device; do not auto-upload to cloud. -->
+    <exclude domain="file" path="." />
+</full-backup-content>

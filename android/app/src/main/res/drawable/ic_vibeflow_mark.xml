@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The VibeFlow waveform mark (full size, no safe-zone scaling) — for the floating bubble. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="256"
+    android:viewportHeight="256">
+    <group android:pivotX="150" android:pivotY="128" android:scaleX="0.92" android:scaleY="0.92">
+        <path
+            android:pathData="M72,106 V150 M110,78 V178 M148,54 V202 M186,88 V168"
+            android:strokeWidth="20"
+            android:strokeLineCap="round">
+            <aapt:attr name="android:strokeColor">
+                <gradient
+                    android:type="linear"
+                    android:startX="64" android:startY="128"
+                    android:endX="200" android:endY="128">
+                    <item android:offset="0" android:color="#3B6FE8" />
+                    <item android:offset="0.55" android:color="#8A5CF6" />
+                    <item android:offset="1" android:color="#F5A524" />
+                </gradient>
+            </aapt:attr>
+        </path>
+        <path
+            android:pathData="M204,128 C220,128 222,110 234,100"
+            android:strokeColor="#F5A524"
+            android:strokeWidth="20"
+            android:strokeLineCap="round" />
+    </group>
+</vector>

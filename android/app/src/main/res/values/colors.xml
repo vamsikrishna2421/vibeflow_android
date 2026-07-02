@@ -1,0 +1,16 @@
+<resources>
+    <!-- VibeFlow brand -->
+    <color name="brand">#5B54E6</color>
+    <color name="brand_dark">#3F37C9</color>
+    <color name="brand_light">#8B85F0</color>
+    <color name="accent_red">#E5484D</color>
+    <color name="accent_amber">#F5A524</color>
+
+    <color name="ime_bg">#1A1726</color>
+    <color name="ime_key">#2A2540</color>
+    <color name="ime_key_text">#F2EEFF</color>
+    <color name="ime_muted">#9B93B8</color>
+
+    <color name="white">#FFFFFFFF</color>
+    <color name="black">#FF000000</color>
+</resources>

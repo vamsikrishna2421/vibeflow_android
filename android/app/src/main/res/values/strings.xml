@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">VibeFlow</string>
+    <string name="ime_label">VibeFlow Voice Keyboard</string>
+    <string name="tile_label">VibeFlow Dictate</string>
+    <string name="subtype_label">VibeFlow Voice</string>
+
+    <!-- IME -->
+    <string name="hold_to_talk">Hold to talk</string>
+    <string name="tap_to_talk">Tap the mic and speak</string>
+    <string name="listening">Listening…</string>
+    <string name="thinking">Finishing…</string>
+
+    <!-- Notifications -->
+    <string name="copied_to_clipboard">Copied to clipboard</string>
+    <string name="capture_channel_name">Voice capture</string>
+    <string name="capture_channel_desc">Shown while VibeFlow is recording your voice.</string>
+
+    <!-- Accessibility (opt-in auto-insert) -->
+    <string name="accessibility_service_label">VibeFlow Auto-insert</string>
+    <string name="accessibility_service_description">Lets VibeFlow type your dictated text straight into the box you\'re writing in, and show the floating mic when a keyboard opens. VibeFlow only writes into the text field you\'re focused on — it does not read, collect, or share any other screen content. You can turn this off anytime.</string>
+</resources>

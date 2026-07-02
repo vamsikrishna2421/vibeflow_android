@@ -1,0 +1,46 @@
+# === Secrets / signing (NEVER commit) ===
+# Release keystore + credentials stay local only (public repo).
+android/keystore.properties
+*.jks
+*.keystore
+!android/app/debug.keystore
+*.env
+.env
+.env.local
+android/local.properties
+
+# === Build outputs ===
+android/build/
+android/*/build/
+android/.gradle/
+android/captures/
+android/app/.cxx/
+android/**/.externalNativeBuild/
+*.iml
+.idea/
+
+# Node / Next.js (dashboard)
+node_modules/
+dashboard/.next/
+dashboard/out/
+
+# Distributable artifacts (build them; attach to a Release instead of committing)
+dist/*.apk
+dist/*.aab
+
+# === iOS (XcodeGen-generated project + build) ===
+ios/VibeFlow.xcodeproj/
+ios/build/
+ios/DerivedData/
+*.xcuserstate
+
+# === Tooling / local state ===
+.claude-flow/
+.claude/settings.local.json
+
+# === OS ===
+.DS_Store
+Thumbs.db
+
+# Note: the bundled Vosk model (android assets/model-en-us) IS committed on purpose
+# so the app builds & runs out of the box. The release keystore is NOT — it's local only.
