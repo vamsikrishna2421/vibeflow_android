@@ -59,7 +59,7 @@ fun micBrush(): Brush = Brush.linearGradient(
 /** The Mynah waveform mark. */
 @Composable
 fun BrandMark(size: Dp = 64.dp, modifier: Modifier = Modifier) {
-    Image(painterResource(R.drawable.ic_vibeflow_mark), contentDescription = null, modifier = modifier.size(size))
+    Image(painterResource(R.drawable.mynah_mark), contentDescription = "Mynah", modifier = modifier.size(size))
 }
 
 /** A small section label above a [GroupCard]. */
