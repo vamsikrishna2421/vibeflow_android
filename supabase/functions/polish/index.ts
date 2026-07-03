@@ -36,7 +36,7 @@ const MAX_SYSTEM = 4000;
 // client sends `style`, we build the prompt here; older apps that send `system` still work.
 const NORMALIZE = `NORMALIZE spoken forms to their standard WRITTEN form:
 - Numbers: spelled-out to digits, INCLUDING small numbers, whenever they are quantities, counts, measurements, durations, money or list counts ("twenty five" to "25", "two loaves" to "2 loaves", "ten days" to "10 days", "three hundred forty" to "340").
-- List markers: when the speaker enumerates items with "number one / number two / number three" (or "first / second / third" as list markers), ALWAYS convert them to "#1", "#2", "#3" — even when the items continue inline.
+- List markers: when the speaker enumerates items with "number one / number two / number three" (or "first / second / third" as list markers), ALWAYS convert them to a numbered list — "1.", "2.", "3." — putting each item on its own line when there are two or more items.
 - Quarters & fiscal: "quarter three" to "Q3"; "fiscal year twenty four" to "FY24". Years: "twenty twenty five" to "2025".
 - Money: "fifty dollars" to "$50". Percent: "ten percent" to "10%".
 - Time: "three thirty pm" to "3:30 PM". Dates: "june twenty fifth" to "June 25".
@@ -74,11 +74,11 @@ function buildSystemPrompt(style: string, userName: string, userTitle: string, a
       } else {
         s += `. If a sender name is unknown, leave a "[Your name]" placeholder.`;
       }
-      s += ` Normalize numbers, dates, times, money, percentages and units to standard written form (e.g. #1, Q3, $50, 10%, 3:30 PM, June 25). Preserve every fact, name and brand. Return ONLY the email.`;
+      s += ` Normalize numbers, dates, times, money, percentages and units to standard written form (e.g. numbered lists as "1." "2.", Q3, $50, 10%, 3:30 PM, June 25). Preserve every fact, name and brand. Return ONLY the email.`;
       return s;
     }
     case "notes":
-      return `Reformat the dictated text into concise, well-organized notes: short bullet points and small headings where helpful. Normalize numbers, dates, times, money and units to standard written form (e.g. #1, Q3, $50, 3:30 PM). Preserve all information, names and brands. Return ONLY the notes.`;
+      return `Reformat the dictated text into concise, well-organized notes: short bullet points and small headings where helpful. Normalize numbers, dates, times, money and units to standard written form (e.g. numbered lists as "1." "2.", Q3, $50, 3:30 PM). Preserve all information, names and brands. Return ONLY the notes.`;
     case "cleanup":
     default:
       return `${INTRO}\n\n${NORMALIZE}\n\n${PRESERVE}\n\nOutput ONLY the cleaned text — no preamble, quotes or explanation.`;
