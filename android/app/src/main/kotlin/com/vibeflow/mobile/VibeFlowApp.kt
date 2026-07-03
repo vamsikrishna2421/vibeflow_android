@@ -27,6 +27,8 @@ class VibeFlowApp : Application() {
     override fun onCreate() {
         super.onCreate()
         instance = this
+        // Google Play billing (inert until the goog_ key is set).
+        com.vibeflow.mobile.billing.RevenueCatManager.configure(this)
         // Encrypt any legacy plaintext API key at rest (Android Keystore migration).
         CoroutineScope(SupervisorJob() + Dispatchers.IO).launch {
             runCatching { settings.migrateSecretsIfNeeded() }

@@ -124,7 +124,7 @@ fun SettingsScreen(
     }
 
     if (showPlans) {
-        SubscriptionScreen(quota, onBack = { showPlans = false }, modifier = modifier)
+        SubscriptionScreen(quota, onBack = { showPlans = false }, onUpgrade = { act, plan -> vm.buyPro(act, plan) }, modifier = modifier)
         return
     }
 

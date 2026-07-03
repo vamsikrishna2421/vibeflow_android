@@ -57,7 +57,12 @@ private val PRO_FEATURES = listOf(
  * and connects to Google Play to subscribe (placeholder until Play Billing is wired).
  */
 @Composable
-fun SubscriptionScreen(quota: SupabaseAuth.Quota?, onBack: () -> Unit, modifier: Modifier = Modifier) {
+fun SubscriptionScreen(
+    quota: SupabaseAuth.Quota?,
+    onBack: () -> Unit,
+    onUpgrade: (android.app.Activity, String) -> Unit = { _, _ -> },
+    modifier: Modifier = Modifier,
+) {
     val context = LocalContext.current
     val isPro = quota?.isPro == true
     var selectedPlan by remember { mutableStateOf("annual") }
@@ -123,7 +128,7 @@ fun SubscriptionScreen(quota: SupabaseAuth.Quota?, onBack: () -> Unit, modifier:
                 // Upgrade CTA → Google Play
                 Box(
                     Modifier.fillMaxWidth().clip(RoundedCornerShape(16.dp)).background(brandBrush())
-                        .clickable { connectToPlay() }.padding(vertical = 16.dp),
+                        .clickable { (context as? android.app.Activity)?.let { onUpgrade(it, selectedPlan) } ?: connectToPlay() }.padding(vertical = 16.dp),
                     contentAlignment = Alignment.Center,
                 ) {
                     Text("Upgrade with Google Play", color = Color.White, style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.SemiBold)

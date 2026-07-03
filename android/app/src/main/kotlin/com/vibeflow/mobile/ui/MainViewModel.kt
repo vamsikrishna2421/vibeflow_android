@@ -84,15 +84,29 @@ class MainViewModel(app: Application) : AndroidViewModel(app) {
         } else if (s.userName.isNotBlank() || s.userTitle.isNotBlank()) {
             runCatching { auth.pushProfile(s.userName, s.userTitle) }
         }
+        com.vibeflow.mobile.billing.RevenueCatManager.logIn(auth.userId().orEmpty())
     }
 
-    fun signOutManaged() = viewModelScope.launch { VibeFlowApp.supabaseAuth().signOut(); _quota.value = null }
+    fun signOutManaged() = viewModelScope.launch { com.vibeflow.mobile.billing.RevenueCatManager.logOut(); VibeFlowApp.supabaseAuth().signOut(); _quota.value = null }
 
     // Live free-tier quota readout (managed tier).
     private val _quota = MutableStateFlow<com.vibeflow.mobile.auth.SupabaseAuth.Quota?>(null)
     val quota: StateFlow<com.vibeflow.mobile.auth.SupabaseAuth.Quota?> = _quota.asStateFlow()
     fun refreshQuota() = viewModelScope.launch {
         _quota.value = runCatching { VibeFlowApp.supabaseAuth().fetchQuota() }.getOrNull()
+    }
+
+    /** Buy Pro via Google Play (RevenueCat). No-op until the goog_ key + Play products exist.
+     *  On success, Pro flips server-side via the webhook (is_pro) → we pull the fresh quota. */
+    fun buyPro(activity: android.app.Activity, planId: String) = viewModelScope.launch {
+        val pkgs = com.vibeflow.mobile.billing.RevenueCatManager.currentPackages()
+        val pkg = pkgs.firstOrNull { it.packageType.name.equals(planId, ignoreCase = true) }
+            ?: pkgs.firstOrNull { it.identifier.contains(planId, ignoreCase = true) }
+            ?: pkgs.firstOrNull()
+            ?: return@launch
+        if (com.vibeflow.mobile.billing.RevenueCatManager.purchase(activity, pkg)) {
+            _quota.value = runCatching { VibeFlowApp.supabaseAuth().fetchQuota() }.getOrNull()
+        }
     }
 
     private val _recordState = MutableStateFlow<RecordState>(RecordState.Idle)
@@ -133,6 +147,7 @@ class MainViewModel(app: Application) : AndroidViewModel(app) {
         viewModelScope.launch { runCatching { engine.warmUp() } }
         viewModelScope.launch { runCatching { dictionaryRepo.ensureLoaded() } }
         viewModelScope.launch { runCatching { correctionsRepo.ensureLoaded() } }
+        viewModelScope.launch { if (authState.value.signedIn) com.vibeflow.mobile.billing.RevenueCatManager.logIn(VibeFlowApp.supabaseAuth().userId().orEmpty()) }
     }
 
     // --- learned corrections ---

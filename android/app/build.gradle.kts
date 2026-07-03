@@ -114,6 +114,7 @@ dependencies {
     implementation(libs.androidx.datastore.preferences)
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.kotlinx.serialization.json)
+    implementation(libs.revenuecat.purchases)
 
     // Inline autofill (password/OTP chips in the suggestion strip, like Gboard) —
     // provides the UiVersions/InlineSuggestionUi style API for InlineSuggestionsRequest.
