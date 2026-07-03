@@ -62,7 +62,7 @@ class VoskSpeechEngine(context: Context) : SpeechEngine {
         if (ContextCompat.checkSelfPermission(appContext, Manifest.permission.RECORD_AUDIO)
             != PackageManager.PERMISSION_GRANTED
         ) {
-            listener.onError("Microphone permission is needed. Open the VibeFlow app to grant it.")
+            listener.onError("Microphone permission is needed. Open the Mynah app to grant it.")
             return
         }
 

@@ -231,11 +231,11 @@ private fun OnboardingSetup(vm: MainViewModel, setup: SetupStatus, actions: Syst
         )
         Spacer(Modifier.height(30.dp))
         SetupCheck(setup.micGranted, "Microphone", "For voice typing — stays on-device", "Grant") { actions.requestMic() }
-        SetupCheck(setup.keyboardEnabled, "Enable VibeFlow keyboard", "Turn it on in keyboard settings", "Enable") { actions.openImeSettings() }
+        SetupCheck(setup.keyboardEnabled, "Enable Mynah keyboard", "Turn it on in keyboard settings", "Enable") { actions.openImeSettings() }
         SetupCheck(setup.notificationsGranted, "Notifications", "Recording status & quick actions", "Allow") { actions.requestNotifications() }
         WhisperSetupRow(whisper)
         Spacer(Modifier.weight(1f))
-        PrimaryButton("Start using VibeFlow") { onDone() }
+        PrimaryButton("Start using Mynah") { onDone() }
         Spacer(Modifier.height(16.dp))
     }
 }

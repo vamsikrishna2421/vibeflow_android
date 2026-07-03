@@ -1,7 +1,7 @@
 package com.vibeflow.mobile.data
 
 /**
- * VibeFlow's managed Smart Formatting backend (Supabase). The URL + anon key are
+ * Mynah's managed Smart Formatting backend (Supabase). The URL + anon key are
  * publishable (the anon key is RLS-gated and safe to ship); real authority comes
  * from the signed-in user's JWT. The OpenAI key lives ONLY as a server secret.
  */

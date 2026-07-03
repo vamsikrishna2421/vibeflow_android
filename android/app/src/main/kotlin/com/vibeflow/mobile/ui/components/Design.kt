@@ -34,7 +34,7 @@ import androidx.compose.ui.unit.dp
 import com.vibeflow.mobile.R
 
 /**
- * VibeFlow design-system primitives — one rhythm + premium components shared by every
+ * Mynah design-system primitives — one rhythm + premium components shared by every
  * screen. Inspired by Notion's restraint (whitespace, hierarchy, one accent) and
  * WhatsApp's grouped cards (leading icon tiles + chevrons). Adaptive light/dark via the
  * Material color scheme. New screens compose these instead of raw Material widgets.
@@ -56,7 +56,7 @@ fun micBrush(): Brush = Brush.linearGradient(
     listOf(Color(0xFF8B5CF6), Color(0xFF5FA8FF)),
 )
 
-/** The VibeFlow waveform mark. */
+/** The Mynah waveform mark. */
 @Composable
 fun BrandMark(size: Dp = 64.dp, modifier: Modifier = Modifier) {
     Image(painterResource(R.drawable.ic_vibeflow_mark), contentDescription = null, modifier = modifier.size(size))

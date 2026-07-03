@@ -4,7 +4,7 @@ import android.content.Context
 import android.content.res.Configuration
 
 /**
- * Gboard-accurate palette so VibeFlow feels like the keyboard people already use.
+ * Gboard-accurate palette so Mynah feels like the keyboard people already use.
  * Neutral cool greys (not the old warm tones), flat keys, Google-blue accents.
  * Resolved once per [KeyboardView] from the system dark/light mode.
  */

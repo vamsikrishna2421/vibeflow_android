@@ -15,7 +15,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.core.view.WindowCompat
 import com.vibeflow.mobile.R
 
-// ── VibeFlow "Cosmic AI" — deep navy, purple→blue gradient brand, white text ─────────
+// ── Mynah "Cosmic AI" — deep navy, purple→blue gradient brand, white text ─────────
 // A forced dark theme (Linear / Raycast / Arc vibe): timeless, premium, room for glows.
 val Ink = Color(0xFFFFFFFF)          // primary text & numbers (white)
 val InkSoft = Color(0xFFB7C2D3)      // secondary text
@@ -86,8 +86,8 @@ private val AppTypography = Typography().run {
 }
 
 @Composable
-fun VibeFlowTheme(
-    darkTheme: Boolean = true,            // VibeFlow is always the Cosmic dark theme
+fun MynahTheme(
+    darkTheme: Boolean = true,            // Mynah is always the Cosmic dark theme
     content: @Composable () -> Unit,
 ) {
     val colors = CosmicColors

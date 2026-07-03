@@ -474,7 +474,7 @@ private fun CaptureDetailScreen(entry: HistoryEntry, vm: MainViewModel, modifier
 
 private fun copyToClipboard(context: android.content.Context, text: String) {
     val cm = context.getSystemService(android.content.ClipboardManager::class.java)
-    cm?.setPrimaryClip(android.content.ClipData.newPlainText("VibeFlow", text))
+    cm?.setPrimaryClip(android.content.ClipData.newPlainText("Mynah", text))
     Toast.makeText(context, "Copied", Toast.LENGTH_SHORT).show()
 }
 

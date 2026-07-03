@@ -6,7 +6,7 @@ import android.content.Context
 
 /** Thin wrapper around the system clipboard. */
 object Clipboard {
-    fun copy(context: Context, text: String, label: String = "VibeFlow") {
+    fun copy(context: Context, text: String, label: String = "Mynah") {
         val cm = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
         cm.setPrimaryClip(ClipData.newPlainText(label, text))
     }
