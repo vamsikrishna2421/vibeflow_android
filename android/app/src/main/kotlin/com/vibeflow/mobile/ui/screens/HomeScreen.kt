@@ -170,7 +170,7 @@ fun HomeScreen(vm: MainViewModel, setup: SetupStatus, actions: SystemActions, mo
         Text("Type anywhere by voice", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.SemiBold)
         Spacer(Modifier.height(10.dp))
         TipRow("1", "Open any app and tap a text box.")
-        TipRow("2", "Switch to the Mynah keyboard (🌐 globe key).")
+        TipRow("2", "Switch to the VibeFlow keyboard (🌐 globe key).")
         TipRow("3", "Tap the mic, speak — your words land at the cursor.")
         Spacer(Modifier.height(12.dp))
         Surface(shape = RoundedCornerShape(16.dp), color = MaterialTheme.colorScheme.surfaceVariant, modifier = Modifier.fillMaxWidth()) {
@@ -192,7 +192,7 @@ private fun onRecordTap(vm: MainViewModel, setup: SetupStatus, actions: SystemAc
     if (!setup.micGranted) actions.requestMic() else vm.toggleRecord()
 }
 
-/** Top-right status chip — Online when Mynah's managed AI is active, Offline (on-device) otherwise. */
+/** Top-right status chip — Online when VibeFlow's managed AI is active, Offline (on-device) otherwise. */
 @Composable
 private fun StatusPill(online: Boolean) {
     val bg = if (online) Color(0xFF12263F) else Color(0xFF1A2338)
@@ -268,7 +268,7 @@ private fun ToggleRow(icon: ImageVector, title: String, subtitle: String, checke
 /** Honest one-liner of what leaves the device for each toggle combination. */
 private fun privacyStatus(aiOn: Boolean, onlineOn: Boolean): String = when {
     !aiOn && !onlineOn -> "True offline — nothing leaves your phone."
-    !aiOn && onlineOn -> "Google transcription · no Mynah AI polish."
+    !aiOn && onlineOn -> "Google transcription · no VibeFlow AI polish."
     aiOn && !onlineOn -> "On-device recognizer + AI polish · best in a quiet room with clear voice."
     else -> "Google transcription + AI polish · handles noisy rooms & low voice."
 }
@@ -338,8 +338,8 @@ private fun SetupCard(setup: SetupStatus, actions: SystemActions) {
             Text("Tap each to grant — choose “Allow / While using the app”.", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
             Spacer(Modifier.height(10.dp))
             SetupRow(setup.micGranted, "Grant microphone", "Needed to hear you. Stays on-device.", "Grant", actions.requestMic)
-            SetupRow(setup.keyboardEnabled, "Enable Mynah keyboard", "Turn it on in keyboard settings.", "Enable", actions.openImeSettings)
-            SetupRow(false, "Pick Mynah when typing", "Choose it now, or use the 🌐 globe key.", "Choose", actions.showImePicker, showCheck = false)
+            SetupRow(setup.keyboardEnabled, "Enable VibeFlow keyboard", "Turn it on in keyboard settings.", "Enable", actions.openImeSettings)
+            SetupRow(false, "Pick VibeFlow when typing", "Choose it now, or use the 🌐 globe key.", "Choose", actions.showImePicker, showCheck = false)
             SetupRow(setup.notificationsGranted, "Allow notifications", "Recommended — status & quick actions.", "Allow", actions.requestNotifications)
             Spacer(Modifier.height(2.dp))
             Text("Missed these? They're always in Settings ▸ Setup & permissions.", style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)

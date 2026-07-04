@@ -1,8 +1,8 @@
 <resources>
-    <string name="app_name">Mynah</string>
-    <string name="ime_label">Mynah Voice Keyboard</string>
-    <string name="tile_label">Mynah Dictate</string>
-    <string name="subtype_label">Mynah Voice</string>
+    <string name="app_name">VibeFlow</string>
+    <string name="ime_label">VibeFlow Voice Keyboard</string>
+    <string name="tile_label">VibeFlow Dictate</string>
+    <string name="subtype_label">VibeFlow Voice</string>
 
     <!-- IME -->
     <string name="hold_to_talk">Hold to talk</string>
@@ -13,9 +13,9 @@
     <!-- Notifications -->
     <string name="copied_to_clipboard">Copied to clipboard</string>
     <string name="capture_channel_name">Voice capture</string>
-    <string name="capture_channel_desc">Shown while Mynah is recording your voice.</string>
+    <string name="capture_channel_desc">Shown while VibeFlow is recording your voice.</string>
 
     <!-- Accessibility (opt-in auto-insert) -->
-    <string name="accessibility_service_label">Mynah Auto-insert</string>
-    <string name="accessibility_service_description">Lets Mynah type your dictated text straight into the box you\'re writing in, and show the floating mic when a keyboard opens. Mynah only writes into the text field you\'re focused on — it does not read, collect, or share any other screen content. You can turn this off anytime.</string>
+    <string name="accessibility_service_label">VibeFlow Auto-insert</string>
+    <string name="accessibility_service_description">Lets VibeFlow type your dictated text straight into the box you\'re writing in, and show the floating mic when a keyboard opens. VibeFlow only writes into the text field you\'re focused on — it does not read, collect, or share any other screen content. You can turn this off anytime.</string>
 </resources>

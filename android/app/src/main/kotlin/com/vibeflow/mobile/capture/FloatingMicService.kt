@@ -36,7 +36,7 @@ import kotlin.math.abs
 
 /**
  * A draggable floating mic bubble (system overlay) so users can keep their own
- * keyboard (Gboard, etc.) and still dictate Mynah voice + AI anywhere: tap →
+ * keyboard (Gboard, etc.) and still dictate VibeFlow voice + AI anywhere: tap →
  * speak → the result is copied to the clipboard, where any keyboard's paste chip
  * (including ours) offers it in one tap. No Accessibility Service needed.
  */
@@ -108,7 +108,7 @@ class FloatingMicService : Service() {
     private fun addBubble() {
         if (bubbleRoot != null) return
         val icon = ImageView(this).apply {
-            setImageResource(R.drawable.ic_launcher_foreground)   // the full-colour Mynah logo
+            setImageResource(R.drawable.ic_launcher_foreground)   // the full-colour VibeFlow logo
             scaleType = ImageView.ScaleType.CENTER_CROP           // fill the circle
             background = grayBg()                                 // start IDLE (gray); state set below
             clipToOutline = true                                  // MASK the logo into a circle (no square corners)
@@ -366,7 +366,7 @@ class FloatingMicService : Service() {
         )
         val notif: Notification = androidx.core.app.NotificationCompat.Builder(this, chId)
             .setSmallIcon(R.drawable.ic_mic_tile)
-            .setContentTitle("Mynah floating mic")
+            .setContentTitle("VibeFlow floating mic")
             .setContentText("Tap the bubble to dictate · long-press it to stop")
             .addAction(0, "Stop", stopPi)
             .setOngoing(true)

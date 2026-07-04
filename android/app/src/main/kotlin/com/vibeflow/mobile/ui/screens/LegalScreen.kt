@@ -67,7 +67,7 @@ fun LegalScreen(doc: LegalDoc, modifier: Modifier = Modifier, onBack: () -> Unit
 }
 
 /**
- * Bundled legal text. Plain language reflecting Mynah's real data practices (on-device
+ * Bundled legal text. Plain language reflecting VibeFlow's real data practices (on-device
  * speech, optional cloud AI, local history). NOT legal advice — have a lawyer review before
  * a public launch, and set a real contact email + your company/jurisdiction details.
  */
@@ -76,10 +76,10 @@ object LegalText {
     const val UPDATED = "27 June 2026"
 
     val PRIVACY = """
-# Mynah Privacy Policy
+# VibeFlow Privacy Policy
 Last updated: $UPDATED
 
-Mynah is a voice keyboard that turns speech into text, with optional AI "Smart Formatting." This policy explains what we collect, why, and your choices. We built Mynah to keep as much as possible on your device.
+VibeFlow is a voice keyboard that turns speech into text, with optional AI "Smart Formatting." This policy explains what we collect, why, and your choices. We built VibeFlow to keep as much as possible on your device.
 
 ## Your speech stays on your device
 Your voice is transcribed entirely on your device. Audio is never uploaded, stored, or sent to us or anyone else. We do not record or keep your audio.
@@ -91,7 +91,7 @@ The history of your dictations is stored only on your device. It is not uploaded
 Smart Formatting is optional. When you use it, only the text of your dictation (never audio) is sent for AI processing, depending on the mode you choose:
 - Private mode: nothing is sent anywhere — formatting happens on-device.
 - Your own key (BYOK): the text goes directly from your device to the AI provider whose key you entered (e.g. OpenAI), under that provider's terms.
-- Mynah managed: the text is sent through Mynah's server to our AI provider (OpenAI), formatted, and returned. We do NOT store the text of your dictations on our servers — only counts (polishes used) and token totals, for quotas, billing, and abuse prevention.
+- VibeFlow managed: the text is sent through VibeFlow's server to our AI provider (OpenAI), formatted, and returned. We do NOT store the text of your dictations on our servers — only counts (polishes used) and token totals, for quotas, billing, and abuse prevention.
 
 ## Account information (managed tier only)
 If you sign in to use the managed tier, we store, via our backend host (Supabase):
@@ -113,7 +113,7 @@ We use this only to run the service. We do not sell your data or use it for adve
 History stays on your device. For managed-tier account data, email us at $CONTACT to request deletion and we will remove your account information.
 
 ## Children
-Mynah is not directed to children under 13 (or the minimum age required in your country).
+VibeFlow is not directed to children under 13 (or the minimum age required in your country).
 
 ## Changes
 We may update this policy and will change the "Last updated" date above.
@@ -123,17 +123,17 @@ Questions or data requests: $CONTACT
     """
 
     val TERMS = """
-# Mynah Terms of Service
+# VibeFlow Terms of Service
 Last updated: $UPDATED
 
-By using Mynah, you agree to these terms.
+By using VibeFlow, you agree to these terms.
 
 ## The service
-Mynah is a voice keyboard with optional AI "Smart Formatting." Speech is transcribed on your device; AI formatting is optional, as described in our Privacy Policy.
+VibeFlow is a voice keyboard with optional AI "Smart Formatting." Speech is transcribed on your device; AI formatting is optional, as described in our Privacy Policy.
 
 ## Your responsibilities
-- Use Mynah lawfully and don't misuse it — no attempts to break, overload, or abuse the service or its quotas.
-- You are responsible for the content you create and send using Mynah.
+- Use VibeFlow lawfully and don't misuse it — no attempts to break, overload, or abuse the service or its quotas.
+- You are responsible for the content you create and send using VibeFlow.
 
 ## AI output
 AI-formatted text is generated automatically and may be inaccurate or not what you intended. Review anything before you send or rely on it. You are responsible for the final text.
@@ -149,10 +149,10 @@ We may limit the number of devices per account and rate-limit usage to keep the 
 The service is provided "as is," without warranties. We may change, suspend, or discontinue features, and there may be downtime.
 
 ## Limitation of liability
-To the extent permitted by law, Mynah and its developers are not liable for indirect or consequential damages, or for issues arising from AI output or third-party providers.
+To the extent permitted by law, VibeFlow and its developers are not liable for indirect or consequential damages, or for issues arising from AI output or third-party providers.
 
 ## Termination
-You can stop using Mynah anytime by uninstalling. We may terminate or limit access for violations of these terms.
+You can stop using VibeFlow anytime by uninstalling. We may terminate or limit access for violations of these terms.
 
 ## Governing law
 These terms are governed by the laws of India.

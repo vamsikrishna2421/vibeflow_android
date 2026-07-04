@@ -30,7 +30,7 @@ import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 
 /**
- * The Mynah keyboard. An everyday keyboard first — full QWERTY with a
+ * The VibeFlow keyboard. An everyday keyboard first — full QWERTY with a
  * predictive suggestion strip, learn-as-you-type autocorrect, and inline math —
  * plus one-tap offline voice (Vosk → [Pipeline] → InputConnection). Word input
  * uses a composing region so suggestions/autocorrect can replace the live word.
@@ -594,14 +594,14 @@ class VibeFlowImeService : InputMethodService(), KeyboardActions {
                         polished = r.text; promptTokens = r.promptTokens; completionTokens = r.completionTokens
                     }
                     com.vibeflow.mobile.ai.ManagedFormatter.Result.NeedsSignIn -> {
-                        showToast("Sign in (Mynah ▸ Settings) to use managed Smart Formatting"); refreshSuggestions(); return@launch
+                        showToast("Sign in (VibeFlow ▸ Settings) to use managed Smart Formatting"); refreshSuggestions(); return@launch
                     }
                     com.vibeflow.mobile.ai.ManagedFormatter.Result.LimitReached -> {
                         showToast("Free Smart Formatting used up — upgrade to Pro to continue"); refreshSuggestions(); return@launch
                     }
                     com.vibeflow.mobile.ai.ManagedFormatter.Result.DeviceSuperseded -> {
                         VibeFlowApp.supabaseAuth().signOut()
-                        showToast("Signed out — your Mynah account is now active on another phone"); refreshSuggestions(); return@launch
+                        showToast("Signed out — your VibeFlow account is now active on another phone"); refreshSuggestions(); return@launch
                     }
                     com.vibeflow.mobile.ai.ManagedFormatter.Result.TooLong -> {
                         showToast("Too long to AI-polish — keeping the offline version"); refreshSuggestions(); return@launch

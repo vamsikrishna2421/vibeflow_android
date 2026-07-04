@@ -47,13 +47,13 @@ private val PLANS = listOf(
 private val PRO_FEATURES = listOf(
     Icons.Filled.AutoAwesome to "Unlimited AI polishes — no weekly cap",
     Icons.Filled.Bolt to "Priority, higher-quality formatting models",
-    Icons.Filled.Devices to "Use Mynah on all your devices",
+    Icons.Filled.Devices to "Use VibeFlow on all your devices",
     Icons.Filled.Language to "Every voice language & on-device packs",
     Icons.Filled.Tune to "Early access to new features",
 )
 
 /**
- * Mynah Pro — the plans / subscription area. Explains Free vs Pro, the plans, multi-device,
+ * VibeFlow Pro — the plans / subscription area. Explains Free vs Pro, the plans, multi-device,
  * and connects to Google Play to subscribe (placeholder until Play Billing is wired).
  */
 @Composable
@@ -82,7 +82,7 @@ fun SubscriptionScreen(
             verticalAlignment = Alignment.CenterVertically,
         ) {
             IconButton(onClick = onBack) { Icon(Icons.AutoMirrored.Filled.ArrowBack, "Back", tint = MaterialTheme.colorScheme.onSurface) }
-            Text("Mynah Pro", style = MaterialTheme.typography.titleLarge, color = MaterialTheme.colorScheme.onSurface)
+            Text("VibeFlow Pro", style = MaterialTheme.typography.titleLarge, color = MaterialTheme.colorScheme.onSurface)
         }
 
         Column(Modifier.padding(horizontal = 20.dp)) {
@@ -94,7 +94,7 @@ fun SubscriptionScreen(
             Spacer(Modifier.height(4.dp))
             Text(
                 if (isPro) "You're on Pro — thank you. Enjoy unlimited polishes on every device."
-                else "Unlimited AI polish, priority models, and Mynah on all your devices.",
+                else "Unlimited AI polish, priority models, and VibeFlow on all your devices.",
                 style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
             )
@@ -161,7 +161,7 @@ fun SubscriptionScreen(
                     DeviceLine("Pro", "Stay signed in on all your devices — phone, tablet and more.")
                     Spacer(Modifier.height(14.dp))
                     Text(
-                        "To add a device: install Mynah on it and sign in with the same Google account.",
+                        "To add a device: install VibeFlow on it and sign in with the same Google account.",
                         style = MaterialTheme.typography.bodySmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
                     )

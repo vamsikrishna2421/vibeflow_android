@@ -27,7 +27,7 @@ import com.vibeflow.mobile.ui.components.brandBrush
 import kotlinx.coroutines.delay
 
 /**
- * First-impression splash (~3s): the brand mark fades+scales in, then the "Mynah"
+ * First-impression splash (~3s): the brand mark fades+scales in, then the "VibeFlow"
  * wordmark rises in, then the gradient "Polish with AI" tagline. Adaptive light/dark.
  */
 @Composable
@@ -51,7 +51,7 @@ fun SplashScreen(onDone: () -> Unit) {
             Spacer(Modifier.height(22.dp))
             AnimatedVisibility(stage >= 2, enter = fadeIn() + slideInVertically { it / 3 }) {
                 Text(
-                    "Mynah",
+                    "VibeFlow",
                     style = MaterialTheme.typography.displaySmall,
                     fontWeight = FontWeight.Bold,
                     color = MaterialTheme.colorScheme.onBackground,

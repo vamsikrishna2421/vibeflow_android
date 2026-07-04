@@ -10,7 +10,7 @@ import java.net.URL
 
 /**
  * The **managed** Smart Formatting path: instead of calling OpenAI with the user's own
- * key (BYOK), it calls Mynah's Supabase `polish` Edge Function with the signed-in
+ * key (BYOK), it calls VibeFlow's Supabase `polish` Edge Function with the signed-in
  * user's token. The server holds the OpenAI key, enforces the free-50 limit / Pro
  * entitlement, and meters usage. The same [SmartFormatter.systemPrompt] styles are
  * reused so output matches the BYOK path exactly.

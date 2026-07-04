@@ -189,7 +189,7 @@ private fun SignInPromptDialog(vm: MainViewModel, onDone: () -> Unit) {
         title = { Text("Turn on AI Smart Formatting") },
         text = {
             Text(
-                "Sign in to get 50 free AI polishes — no API key needed. Mynah automatically cleans up and " +
+                "Sign in to get 50 free AI polishes — no API key needed. VibeFlow automatically cleans up and " +
                     "restructures your dictation. You can switch to your own key or fully-private mode anytime in Settings.",
                 style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
@@ -227,7 +227,7 @@ private fun incompleteSetup(
     goSettings: () -> Unit,
 ): List<SetupItem> = buildList {
     if (!setup.micGranted) add(SetupItem("Microphone", "Required for voice typing — stays on-device", "Grant", actions.requestMic))
-    if (!setup.keyboardEnabled) add(SetupItem("Enable Mynah keyboard", "Turn it on in keyboard settings", "Enable", actions.openImeSettings))
+    if (!setup.keyboardEnabled) add(SetupItem("Enable VibeFlow keyboard", "Turn it on in keyboard settings", "Enable", actions.openImeSettings))
     if (!setup.notificationsGranted) add(SetupItem("Allow notifications", "Recording status & quick actions", "Allow", actions.requestNotifications))
     if (settings.userName.isBlank()) add(SetupItem("Add your name", "Personalizes your email sign-offs", "Add", goSettings))
 }
@@ -236,7 +236,7 @@ private fun incompleteSetup(
 private fun SetupReminderDialog(items: List<SetupItem>, onSkip: () -> Unit) {
     AlertDialog(
         onDismissRequest = onSkip,
-        title = { Text("Finish setting up Mynah") },
+        title = { Text("Finish setting up VibeFlow") },
         text = {
             Column {
                 Text(

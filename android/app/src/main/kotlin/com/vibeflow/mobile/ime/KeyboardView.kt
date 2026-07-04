@@ -44,7 +44,7 @@ data class KeyboardUiState(
 )
 
 /**
- * The Mynah keyboard — a normal everyday keyboard first (full QWERTY + a
+ * The VibeFlow keyboard — a normal everyday keyboard first (full QWERTY + a
  * Gboard-style suggestion strip), with one-tap offline voice on the right of the
  * strip. Warm palette, theme-aware, shift + symbols.
  */
@@ -520,7 +520,7 @@ class KeyboardView(context: Context, private val actions: KeyboardActions, theme
     }
 
     private fun spaceKey(): View = TextView(context).apply {
-        text = "Mynah"
+        text = "VibeFlow"
         setTextColor(p.keyMuted)
         textSize = 12f
         letterSpacing = 0.04f

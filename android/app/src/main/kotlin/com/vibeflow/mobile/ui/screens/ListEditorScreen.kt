@@ -50,8 +50,8 @@ fun ListEditorScreen(
     ) { padding ->
         Column(Modifier.padding(padding).fillMaxSize().padding(horizontal = 16.dp)) {
             Text(
-                if (isVocab) "Teach Mynah proper spelling & casing for names and jargon. Each term is restored on every dictation."
-                else "Say the trigger phrase and Mynah inserts the full text. Great for emails, addresses, signatures.",
+                if (isVocab) "Teach VibeFlow proper spelling & casing for names and jargon. Each term is restored on every dictation."
+                else "Say the trigger phrase and VibeFlow inserts the full text. Great for emails, addresses, signatures.",
                 style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
                 modifier = Modifier.padding(vertical = 12.dp),

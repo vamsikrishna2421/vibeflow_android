@@ -89,7 +89,7 @@ class SmartFormatter(
         private val PRESERVE = """
             PRESERVE — never change these:
             - The speaker's meaning, intent, facts, numbers and order. Do NOT paraphrase, summarize, shorten, expand or invent anything beyond the formatting requested above.
-            - Real names, brands and technical terms exactly as said (e.g. ColorOS, OnePlus, Kubernetes, Mynah, WhatsApp, Docker). Never swap a real proper noun for a common word.
+            - Real names, brands and technical terms exactly as said (e.g. ColorOS, OnePlus, Kubernetes, VibeFlow, WhatsApp, Docker). Never swap a real proper noun for a common word.
         """.trimIndent()
 
         private val INTRO =

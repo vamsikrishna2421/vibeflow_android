@@ -53,7 +53,7 @@
             </intent-filter>
         </activity>
 
-        <!-- The Mynah voice keyboard (Input Method Editor). -->
+        <!-- The VibeFlow voice keyboard (Input Method Editor). -->
         <service
             android:name=".ime.VibeFlowImeService"
             android:exported="true"

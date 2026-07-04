@@ -38,7 +38,7 @@ import com.vibeflow.mobile.data.Settings
 import com.vibeflow.mobile.ui.theme.AccentRed
 import com.vibeflow.mobile.ui.theme.Brand
 import com.vibeflow.mobile.ui.theme.CtaGreen
-import com.vibeflow.mobile.ui.theme.MynahTheme
+import com.vibeflow.mobile.ui.theme.VibeFlowTheme
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 
@@ -67,7 +67,7 @@ class CaptureActivity : ComponentActivity() {
         lifecycleScope.launch { settings = VibeFlowApp.settings().flow.first() }
 
         setContent {
-            MynahTheme {
+            VibeFlowTheme {
                 CaptureSheet(
                     state = uiState.value,
                     preview = preview.value,
@@ -222,7 +222,7 @@ private fun CaptureSheet(
                         Text("Microphone needed", style = MaterialTheme.typography.titleMedium)
                         Spacer(Modifier.height(8.dp))
                         Text(
-                            "Open Mynah and grant the microphone permission, then try again.",
+                            "Open VibeFlow and grant the microphone permission, then try again.",
                             textAlign = TextAlign.Center,
                             style = MaterialTheme.typography.bodyMedium,
                         )

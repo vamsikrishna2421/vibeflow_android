@@ -5,7 +5,7 @@ import android.content.Context
 /**
  * Chooses the speech engine for the current preference:
  *  - **online** (Google) recognizer by default — best accuracy across devices; audio is sent to
- *    the phone's Google voice service (like any keyboard's voice typing), not to Mynah servers;
+ *    the phone's Google voice service (like any keyboard's voice typing), not to VibeFlow servers;
  *  - **on-device** system recognizer when Private mode is on (or online isn't available) — nothing
  *    leaves the phone;
  *  - downloadable **Vosk** as the last-resort fallback when neither system path exists.

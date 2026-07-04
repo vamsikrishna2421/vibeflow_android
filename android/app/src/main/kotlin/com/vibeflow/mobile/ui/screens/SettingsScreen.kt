@@ -158,7 +158,7 @@ fun SettingsScreen(
             NavRow("Voice language", "${voiceLangLabel(settings.recognitionLanguage)} — match your accent for better recognition") { showLang = true }
         }
 
-        SectionHeader("Mynah Pro")
+        SectionHeader("VibeFlow Pro")
         ProCard(quota) { showPlans = true }
 
         SectionHeader("Preferences")
@@ -184,8 +184,8 @@ fun SettingsScreen(
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
                 modifier = Modifier.padding(start = 16.dp, top = 8.dp),
             )
-            // Tier: Private (on-device) · Your key (BYOK) · Mynah (managed proxy).
-            val tiers = listOf("private" to "Private", "byok" to "Your key", "managed" to "Mynah")
+            // Tier: Private (on-device) · Your key (BYOK) · VibeFlow (managed proxy).
+            val tiers = listOf("private" to "Private", "byok" to "Your key", "managed" to "VibeFlow")
             SingleChoiceSegmentedButtonRow(Modifier.fillMaxWidth().padding(16.dp)) {
                 tiers.forEachIndexed { i, (value, label) ->
                     SegmentedButton(
@@ -231,7 +231,7 @@ fun SettingsScreen(
                             ) { Text(if (signingIn) "Signing in…" else "Sign in with Google") }
                         }
                         Text(
-                            "50 free polishes, then upgrade to Pro (coming soon). Your text is proxied through Mynah — no key needed.",
+                            "50 free polishes, then upgrade to Pro (coming soon). Your text is proxied through VibeFlow — no key needed.",
                             style = MaterialTheme.typography.labelMedium,
                             color = MaterialTheme.colorScheme.onSurfaceVariant,
                             modifier = Modifier.padding(start = 16.dp, end = 16.dp, bottom = 8.dp),
@@ -262,13 +262,13 @@ fun SettingsScreen(
         }
 
         Group("Personalize", Icons.Filled.Tune) {
-            NavRow("Vocabulary", "Teach Mynah your names & jargon (${settings.vocabulary.size})") { onOpenEditor(EditorType.Vocabulary) }
+            NavRow("Vocabulary", "Teach VibeFlow your names & jargon (${settings.vocabulary.size})") { onOpenEditor(EditorType.Vocabulary) }
             NavRow("Snippets", "Say a phrase, insert longer text (${settings.snippets.size})") { onOpenEditor(EditorType.Snippets) }
-            NavRow("Learned corrections", "Fixes Mynah learned from your edits (${corrections.size})") { showCorrections = true }
+            NavRow("Learned corrections", "Fixes VibeFlow learned from your edits (${corrections.size})") { showCorrections = true }
         }
 
         Group("Typing dictionary", Icons.Filled.Spellcheck) {
-            NavRow("Teach from your text", "Paste your writing — Mynah learns your words") { teachText = ""; showTeach = true }
+            NavRow("Teach from your text", "Paste your writing — VibeFlow learns your words") { teachText = ""; showTeach = true }
             NavRow("Export my words", "Copy your learned vocabulary to migrate or back up") {
                 clipboard.setText(AnnotatedString(vm.exportVocabulary()))
                 Toast.makeText(context, "Your words are on the clipboard", Toast.LENGTH_SHORT).show()
@@ -317,7 +317,7 @@ fun SettingsScreen(
         }
 
         Group("Behavior", Icons.Filled.RecordVoiceOver) {
-            SwitchRow("Hands-free (auto-stop)", "Tap once, speak, and Mynah stops on its own when you pause", settings.handsFree) { vm.setHandsFree(it) }
+            SwitchRow("Hands-free (auto-stop)", "Tap once, speak, and VibeFlow stops on its own when you pause", settings.handsFree) { vm.setHandsFree(it) }
             SwitchRow("Hold-to-talk", "Hold the mic to talk instead of tap-to-toggle", settings.pushToTalk) { vm.setPushToTalk(it) }
             SwitchRow("Haptic feedback", "Buzz when recording starts/stops", settings.haptics) { vm.setHaptics(it) }
             SwitchRow("Keep history", "Save dictations locally so you can copy them later", settings.historyEnabled) { vm.setHistoryEnabled(it) }
@@ -352,13 +352,13 @@ fun SettingsScreen(
                 "Auto-insert at cursor",
                 when {
                     settings.autoInsert && accessibilityOn -> "On — dictation types straight into the field, no copy-paste"
-                    settings.autoInsert && !accessibilityOn -> "⚠ Turn on “Mynah Auto-insert” in Accessibility settings"
+                    settings.autoInsert && !accessibilityOn -> "⚠ Turn on “VibeFlow Auto-insert” in Accessibility settings"
                     else -> "Type dictation into the field instead of copy-paste (uses an Accessibility service)"
                 },
                 settings.autoInsert,
             ) { want -> if (want) showAutoInsert = true else vm.setAutoInsert(false) }
             if (settings.autoInsert && !accessibilityOn) {
-                NavRow("Open Accessibility settings", "Enable “Mynah Auto-insert” to finish") { actions.openAccessibilitySettings() }
+                NavRow("Open Accessibility settings", "Enable “VibeFlow Auto-insert” to finish") { actions.openAccessibilitySettings() }
             }
         }
 
@@ -375,7 +375,7 @@ fun SettingsScreen(
                 }
             }
             NavRow("Enable / manage keyboard", "Open system keyboard settings") { actions.openImeSettings() }
-            NavRow("Switch keyboard now", "Choose Mynah as the active keyboard") { actions.showImePicker() }
+            NavRow("Switch keyboard now", "Choose VibeFlow as the active keyboard") { actions.showImePicker() }
             NavRow("App permissions", "Microphone & notifications") { actions.openAppDetails() }
         }
 
@@ -387,19 +387,19 @@ fun SettingsScreen(
                 modifier = Modifier.padding(start = 16.dp, top = 8.dp, end = 16.dp),
             )
             PermissionRow(setup.micGranted, "Microphone", "Required for voice typing — your voice stays on-device", "Grant") { actions.requestMic() }
-            PermissionRow(setup.keyboardEnabled, "Enable Mynah keyboard", "Turn it on in system keyboard settings", "Enable") { actions.openImeSettings() }
-            PermissionRow(true, "Set Mynah as your keyboard", "Pick it now, or use the 🌐 globe key while typing", "Choose", alwaysAction = true) { actions.showImePicker() }
+            PermissionRow(setup.keyboardEnabled, "Enable VibeFlow keyboard", "Turn it on in system keyboard settings", "Enable") { actions.openImeSettings() }
+            PermissionRow(true, "Set VibeFlow as your keyboard", "Pick it now, or use the 🌐 globe key while typing", "Choose", alwaysAction = true) { actions.showImePicker() }
             PermissionRow(setup.notificationsGranted, "Notifications", "Recommended — recording status & quick actions", "Allow") { actions.requestNotifications() }
             PermissionRow(setup.overlayGranted, "Floating mic (display over apps)", "Optional — dictate from any keyboard", "Allow") { actions.requestOverlay() }
         }
 
         SectionHeader("Support")
         Group("Help & support", Icons.Filled.Info) {
-            NavRow("Help & Support", "Guides, tips and how-tos") { emailSupport(context, "Mynah — Help") }
-            NavRow("Give Feedback", "Tell us what to improve") { emailSupport(context, "Mynah — Feedback") }
-            NavRow("Privacy Policy", "How Mynah handles your data") { onOpenLegal(LegalDoc.Privacy) }
+            NavRow("Help & Support", "Guides, tips and how-tos") { emailSupport(context, "VibeFlow — Help") }
+            NavRow("Give Feedback", "Tell us what to improve") { emailSupport(context, "VibeFlow — Feedback") }
+            NavRow("Privacy Policy", "How VibeFlow handles your data") { onOpenLegal(LegalDoc.Privacy) }
             NavRow("Terms of Service", "The terms you agree to") { onOpenLegal(LegalDoc.Terms) }
-            InfoRow("About Mynah", "Version 0.1.0 · your voice, beautifully written")
+            InfoRow("About VibeFlow", "Version 0.1.0 · your voice, beautifully written")
         }
         Spacer(Modifier.height(40.dp))
     }
@@ -407,7 +407,7 @@ fun SettingsScreen(
     if (showTeach) {
         TextDialog(
             title = "Teach from your text",
-            help = "Paste a few messages or notes you've written. Mynah learns the words you actually use (any language).",
+            help = "Paste a few messages or notes you've written. VibeFlow learns the words you actually use (any language).",
             placeholder = "Paste your writing here…",
             confirm = "Teach",
             value = teachText,
@@ -425,7 +425,7 @@ fun SettingsScreen(
     if (showImport) {
         TextDialog(
             title = "Import words",
-            help = "Paste a vocabulary exported from Mynah (from another device or a backup).",
+            help = "Paste a vocabulary exported from VibeFlow (from another device or a backup).",
             placeholder = "Paste exported JSON…",
             confirm = "Import",
             value = importText,
@@ -498,12 +498,12 @@ fun SettingsScreen(
             title = { Text("Enable Auto-insert?") },
             text = {
                 Text(
-                    "Mynah will use an Accessibility service to type your dictated text straight into the box " +
+                    "VibeFlow will use an Accessibility service to type your dictated text straight into the box " +
                         "you're writing in, and to show the floating mic when a keyboard opens.\n\n" +
                         "It only writes into the text field you're focused on — it does not read, collect, or share " +
                         "any other screen content. You can turn it off anytime.\n\n" +
                         "Tap Continue, then on the Accessibility screen open “Downloaded apps” (or “Installed apps”) → " +
-                        "“Mynah Auto-insert” → turn it On and accept the prompt.",
+                        "“VibeFlow Auto-insert” → turn it On and accept the prompt.",
                     style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                 )
@@ -643,7 +643,7 @@ fun SettingsScreen(
             text = {
                 if (corrections.isEmpty()) {
                     Text(
-                        "None yet. When you fix a mis-heard word and send, Mynah learns it after a couple of times — then applies it automatically.",
+                        "None yet. When you fix a mis-heard word and send, VibeFlow learns it after a couple of times — then applies it automatically.",
                         style = MaterialTheme.typography.bodyMedium,
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
                     )
@@ -809,7 +809,7 @@ private fun Group(
     }
 }
 
-/** Opens the user's mail app to the Mynah support address. */
+/** Opens the user's mail app to the VibeFlow support address. */
 private fun emailSupport(context: android.content.Context, subject: String) {
     val intent = android.content.Intent(android.content.Intent.ACTION_SENDTO).apply {
         data = android.net.Uri.parse("mailto:vamsy.24@gmail.com")
@@ -830,7 +830,7 @@ private fun SectionHeader(label: String) {
     )
 }
 
-/** The Mynah Pro / subscription card — the monetization surface. */
+/** The VibeFlow Pro / subscription card — the monetization surface. */
 @Composable
 private fun ProCard(quota: com.vibeflow.mobile.auth.SupabaseAuth.Quota?, onUpgrade: () -> Unit) {
     val isPro = quota?.isPro == true
@@ -845,7 +845,7 @@ private fun ProCard(quota: com.vibeflow.mobile.auth.SupabaseAuth.Quota?, onUpgra
             com.vibeflow.mobile.ui.components.GradientIcon(Icons.Filled.AutoAwesome, boxSize = 46.dp, iconSize = 25.dp, radius = 14.dp)
             Spacer(Modifier.width(14.dp))
             Column(Modifier.weight(1f)) {
-                Text("Mynah Pro", style = MaterialTheme.typography.titleSmall, fontWeight = FontWeight.SemiBold, color = MaterialTheme.colorScheme.onSurface)
+                Text("VibeFlow Pro", style = MaterialTheme.typography.titleSmall, fontWeight = FontWeight.SemiBold, color = MaterialTheme.colorScheme.onSurface)
                 Text(
                     if (isPro) "Active · unlimited AI polishes"
                     else quota?.let { "${it.remaining} free polishes left · go unlimited" } ?: "Unlimited AI polishes & priority models",
@@ -894,7 +894,7 @@ private fun ProfileHeader(name: String, subtitle: String, onClick: () -> Unit) {
     }
 }
 
-/** True if the Mynah auto-insert Accessibility service is currently enabled by the user. */
+/** True if the VibeFlow auto-insert Accessibility service is currently enabled by the user. */
 private fun isAccessibilityServiceEnabled(context: Context): Boolean {
     val id = "${context.packageName}/com.vibeflow.mobile.accessibility.VibeFlowAccessibilityService"
     val enabled = android.provider.Settings.Secure.getString(

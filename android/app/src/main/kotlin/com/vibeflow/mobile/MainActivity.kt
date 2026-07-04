@@ -25,7 +25,7 @@ import kotlinx.coroutines.launch
 import com.vibeflow.mobile.ui.MainViewModel
 import com.vibeflow.mobile.ui.SetupStatus
 import com.vibeflow.mobile.ui.SystemActions
-import com.vibeflow.mobile.ui.theme.MynahTheme
+import com.vibeflow.mobile.ui.theme.VibeFlowTheme
 
 class MainActivity : ComponentActivity() {
 
@@ -42,7 +42,7 @@ class MainActivity : ComponentActivity() {
         maybeRequestNotifications()
 
         setContent {
-            MynahTheme {
+            VibeFlowTheme {
                 val vm: MainViewModel = viewModel()
                 val settings by vm.settings.collectAsState()
                 val actions = SystemActions(
@@ -61,7 +61,7 @@ class MainActivity : ComponentActivity() {
                     openAccessibilitySettings = {
                         // Deep-link straight to our service where supported (Pixel/AOSP); Samsung
                         // ignores the extras and lands on the main page → the dialog tells the user
-                        // to open "Downloaded apps" ▸ "Mynah Auto-insert".
+                        // to open "Downloaded apps" ▸ "VibeFlow Auto-insert".
                         val cn = android.content.ComponentName(
                             this, "com.vibeflow.mobile.accessibility.VibeFlowAccessibilityService",
                         ).flattenToString()

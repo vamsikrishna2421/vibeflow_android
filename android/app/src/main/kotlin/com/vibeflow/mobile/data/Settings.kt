@@ -6,7 +6,7 @@ import com.vibeflow.mobile.core.TextCuration
 
 /**
  * All user-tunable behaviour in one immutable snapshot. Sensible, opinionated
- * defaults so Mynah is great out of the box — history ON (the user asked for
+ * defaults so VibeFlow is great out of the box — history ON (the user asked for
  * it), spoken punctuation + auto-capitalisation ON (the offline engine emits raw
  * lowercase), filler removal OFF (conservative, opt-in like the desktop).
  */
@@ -43,7 +43,7 @@ data class Settings(
     // Which Smart Formatting path to use:
     //  private  = on-device L1/L2 only, nothing leaves the device (== privateMode)
     //  byok     = remote OpenAI with the user's own key (llmApiKey)
-    //  managed  = Mynah's Supabase proxy (Google sign-in, free-50 trial / Pro)
+    //  managed  = VibeFlow's Supabase proxy (Google sign-in, free-50 trial / Pro)
     val smartFormatTier: String = "byok",
     val floatingMic: Boolean = false,              // show the draggable floating mic bubble
     val autoInsert: Boolean = false,               // opt-in: type dictation at the cursor via the Accessibility service
