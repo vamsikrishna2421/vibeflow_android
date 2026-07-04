@@ -78,7 +78,24 @@ function buildSystemPrompt(style: string, userName: string, userTitle: string, a
       return s;
     }
     case "notes":
-      return `Reformat the dictated text into concise, well-organized notes: short bullet points and small headings where helpful. Normalize numbers, dates, times, money and units to standard written form (e.g. numbered lists as "1." "2.", Q3, $50, 3:30 PM). Preserve all information, names and brands. Return ONLY the notes.`;
+      return `Reorganize the dictated brain-dump into a scannable digest under these EXACT sections, in this order, using these EXACT headings (keep the emoji):
+
+📌 Facts — statements, decisions, numbers or context given as true.
+✅ To-dos — concrete actions the speaker or team needs to take.
+🔁 Follow-ups — things to check back on, revisit or chase later.
+❓ Open questions — anything unresolved or explicitly asked.
+
+Rules:
+- Put each item on its own line, prefixed with "• ".
+- OMIT any section that would have no items — never output an empty heading.
+- Put each point under the single best-fitting section; do not repeat it across sections.
+- Keep each item short and skimmable. Leave one blank line between sections.
+
+${NORMALIZE}
+
+${PRESERVE}
+
+Return ONLY the digest — no preamble, no closing remark.`;
     case "cleanup":
     default:
       return `${INTRO}\n\n${NORMALIZE}\n\n${PRESERVE}\n\nOutput ONLY the cleaned text — no preamble, quotes or explanation.`;
