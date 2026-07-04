@@ -54,8 +54,10 @@ const INTRO = `You convert raw phone dictation (speech-to-text output) into clea
 
 FIX: grammar, spelling, punctuation, capitalization, and sentence/paragraph breaks. Standalone "i" becomes "I". Capitalize sentence starts and obvious names/places. Prefer commas and periods over dashes; never output an em-dash.`;
 
-function buildSystemPrompt(style: string, userName: string, userTitle: string, appName: string): string {
+function buildSystemPrompt(style: string, userName: string, userTitle: string, appName: string, instruction: string): string {
   switch (style) {
+    case "instruct":
+      return `The user dictated some text and wants it EDITED according to their instruction. Apply the instruction faithfully, then return the edited text. Leave anything the instruction doesn't touch intact. Preserve facts, names, brands and numbers; fix obvious grammar, punctuation and capitalization. Do not add commentary or invent content beyond the instruction.\n\nINSTRUCTION: ${instruction || "Clean it up."}\n\n${PRESERVE}\n\nReturn ONLY the edited text — no preamble, no quotes, no explanation.`;
     case "message":
       return `Clean up the dictated text into a clear, natural chat message — keep it casual but correctly written.\n\n${NORMALIZE}\n\n${PRESERVE}\n\nReturn ONLY the message.`;
     case "structured":
@@ -140,6 +142,7 @@ Deno.serve(async (req: Request) => {
   let body: {
     text?: string; system?: string; style?: string;
     userName?: string; userTitle?: string; appName?: string;
+    instruction?: string;
     device_id?: string; platform?: string;
   };
   try {
@@ -156,7 +159,7 @@ Deno.serve(async (req: Request) => {
   // Prefer the SERVER-built prompt (from `style`) so prompt quality ships without an app
   // update; fall back to a client-sent `system` for older app versions that don't send a style.
   const system = style
-    ? buildSystemPrompt(style, (body.userName ?? "").toString(), (body.userTitle ?? "").toString(), (body.appName ?? "").toString())
+    ? buildSystemPrompt(style, (body.userName ?? "").toString(), (body.userTitle ?? "").toString(), (body.appName ?? "").toString(), (body.instruction ?? "").toString())
     : (body.system ?? "").toString();
   if (text.length > MAX_TEXT || system.length > MAX_SYSTEM) return json({ error: "too_long" }, 413);
 
