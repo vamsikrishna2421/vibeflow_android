@@ -44,3 +44,4 @@ Thumbs.db
 
 # Note: the bundled Vosk model (android assets/model-en-us) IS committed on purpose
 # so the app builds & runs out of the box. The release keystore is NOT — it's local only.
+.vercel
