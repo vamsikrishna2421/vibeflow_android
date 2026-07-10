@@ -5,16 +5,19 @@ const COST_PER_MTOK = 0.30 // USD per 1M tokens (GPT-nano estimate)
 /** Pulls users + profiles + devices + status, merges, and computes the overview metrics. */
 export async function getDashboardData() {
   const sb = admin()
-  const [usersRes, profRes, devRes, statusRes] = await Promise.all([
+  // allSettled (not all): a single failing/slow query must never throw the whole
+  // page — that surfaced as a 503 on router.refresh() and made actions look broken.
+  const [usersRes, profRes, devRes, statusRes] = await Promise.allSettled([
     sb.auth.admin.listUsers({ page: 1, perPage: 1000 }),
     sb.from('profiles').select('*'),
     sb.from('devices').select('user_id,last_seen'),
     sb.from('app_status').select('*').eq('id', true).maybeSingle(),
   ])
-  const users = usersRes?.data?.users || []
-  const profiles = profRes?.data || []
-  const devices = devRes?.data || []
-  const status = statusRes?.data || { maintenance: false, message: '', until: null }
+  const val = (r) => (r.status === 'fulfilled' ? r.value : null)
+  const users = val(usersRes)?.data?.users || []
+  const profiles = val(profRes)?.data || []
+  const devices = val(devRes)?.data || []
+  const status = val(statusRes)?.data || { maintenance: false, message: '', until: null }
 
   const profById = Object.fromEntries(profiles.map((p) => [p.id, p]))
   const devByUser = {}

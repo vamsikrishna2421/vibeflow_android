@@ -26,7 +26,7 @@ export default function MaintenancePanel({ status }) {
         <h2>Maintenance / kill-switch</h2>
         <span className={'pill ' + (on ? 'pill-on' : 'pill-off')}>{on ? 'DOWN' : 'Operational'}</span>
       </div>
-      {on && status?.until && <p className="muted">Scheduled until {new Date(status.until).toLocaleString()}</p>}
+      {on && status?.until && <p className="muted" suppressHydrationWarning>Scheduled until {new Date(status.until).toLocaleString()}</p>}
       <textarea value={message} onChange={(e) => setMessage(e.target.value)} rows={2}
         placeholder="Message shown in every app" />
       <div className="row">
